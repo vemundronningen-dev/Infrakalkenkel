@@ -32,7 +32,7 @@ export default async function EstimateDetailPage({ params }: { params: Promise<{
         <h1 className="text-2xl font-semibold">{estimate.project_name}</h1>
         <p className="text-sm text-slate-600">Enter unit prices and comments. Changes autosave.</p>
       </div>
-      <EstimateTable currency={estimate.currency} initialItems={items ?? []} />
+      <EstimateTable estimateId={estimate.id} currency={estimate.currency} initialItems={items ?? []} />
     </main>
   );
 }

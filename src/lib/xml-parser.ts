@@ -52,12 +52,9 @@ export async function parseNs3459Xml(xmlContent: string): Promise<ParsedEstimate
     trim: true
   });
 
-  type XmlObject = Record<string, unknown>;
-
-  const root = parsed as XmlObject;
-  const project = (root.ProsjektNS as XmlObject | undefined) ?? root;
-  const postValue = project.Post;
-  const postNodes = postValue ? (Array.isArray(postValue) ? postValue : [postValue]) : [];
+  const root = parsed as Record<string, any>;
+  const project = root.ProsjektNS ?? root;
+  const postNodes = project.Post ? (Array.isArray(project.Post) ? project.Post : [project.Post]) : [];
 
   const items: ParsedItem[] = postNodes.map((post: Record<string, unknown>, index: number) => {
     const codeNode = (post.Kode as Record<string, unknown>) || {};
