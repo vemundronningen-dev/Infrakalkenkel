@@ -17,11 +17,12 @@ type Item = {
 };
 
 type Props = {
+  estimateId: string;
   currency: string;
   initialItems: Item[];
 };
 
-export function EstimateTable({ currency, initialItems }: Props) {
+export function EstimateTable({ estimateId, currency, initialItems }: Props) {
   const [items, setItems] = useState(initialItems);
   const [isPending, startTransition] = useTransition();
 
